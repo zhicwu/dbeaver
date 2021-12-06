@@ -41,6 +41,16 @@
         </repository>
     </repositories>
 
+    <reporting>
+       <plugins>
+         <plugin>
+           <groupId>org.apache.maven.plugins</groupId>
+           <artifactId>maven-checkstyle-plugin</artifactId>
+           <version>3.1.2</version>
+         </plugin>
+       </plugins>
+     </reporting>
+
     <build>
         <sourceDirectory>${project.basedir}/src</sourceDirectory>
         <testSourceDirectory>${project.basedir}/tests</testSourceDirectory>

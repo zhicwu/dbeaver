@@ -60,3 +60,6 @@ $RECYCLE.BIN/
 
 # Mac crap
 .DS_Store
+
+# CheckStyle reports
+**/checkstyle-result.xml
