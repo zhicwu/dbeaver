@@ -29,6 +29,7 @@ import org.jkiss.utils.CommonUtils;
 public class GenericDataSourceInfo extends JDBCDataSourceInfo {
 
     private final boolean supportsLimits;
+    public boolean supportsCatalogSelection;
     private boolean supportsMultipleResults;
     private boolean supportsNullableUniqueConstraints;
     private final boolean supportsSetArray;
@@ -62,6 +63,10 @@ public class GenericDataSourceInfo extends JDBCDataSourceInfo {
 
     public void setSupportsNullableUniqueConstraints(boolean supportsNullableUniqueConstraints) {
         this.supportsNullableUniqueConstraints = supportsNullableUniqueConstraints;
+    }
+
+    public boolean supportsCatalogSelection() {
+        return supportsCatalogSelection;
     }
 
     @Override

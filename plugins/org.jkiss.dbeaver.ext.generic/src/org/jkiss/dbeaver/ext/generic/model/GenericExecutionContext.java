@@ -217,10 +217,10 @@ public class GenericExecutionContext extends JDBCExecutionContext implements DBC
         GenericDataSource dataSource = getDataSource();
         if (dataSource.isSelectedEntityFromAPI() || !CommonUtils.isEmpty(dataSource.getQuerySetActiveDB())) {
             if (CommonUtils.isEmpty(dataSource.getSelectedEntityType())) {
-                return dataSource.hasCatalogs();
+                return dataSource.hasCatalogs() && !((GenericDataSourceInfo) dataSource.getInfo()).supportsCatalogSelection();
             }
             if (dataSource.hasCatalogs()) {
-                return GenericConstants.ENTITY_TYPE_CATALOG.equals(dataSource.getSelectedEntityType()) || !dataSource.hasSchemas();
+                return (GenericConstants.ENTITY_TYPE_CATALOG.equals(dataSource.getSelectedEntityType()) || !dataSource.hasSchemas()) && ((GenericDataSourceInfo) dataSource.getInfo()).supportsCatalogSelection();
             }
         }
         return false;
@@ -231,10 +231,10 @@ public class GenericExecutionContext extends JDBCExecutionContext implements DBC
         GenericDataSource dataSource = getDataSource();
         if (dataSource.isSelectedEntityFromAPI() || !CommonUtils.isEmpty(dataSource.getQuerySetActiveDB())) {
             if (CommonUtils.isEmpty(dataSource.getSelectedEntityType())) {
-                return !dataSource.hasCatalogs() && dataSource.hasSchemas();
+                return !dataSource.hasCatalogs() && dataSource.hasSchemas() && !((GenericDataSourceInfo) dataSource.getInfo()).supportsCatalogSelection();
             }
             if (dataSource.hasSchemas()) {
-                return GenericConstants.ENTITY_TYPE_SCHEMA.equals(dataSource.getSelectedEntityType()) || !dataSource.hasCatalogs();
+                return (GenericConstants.ENTITY_TYPE_SCHEMA.equals(dataSource.getSelectedEntityType()) || !dataSource.hasCatalogs()) && ((GenericDataSourceInfo) dataSource.getInfo()).supportsCatalogSelection();
             }
         }
         return false;
